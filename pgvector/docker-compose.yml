@@ -1,0 +1,20 @@
+services:
+  pgvector:
+    hostname: pgvector-db
+    image: ankane/pgvector
+    ports:
+      - "5433:5432"  
+    restart: always
+    environment:
+      - POSTGRES_DB=vectordb
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpwd
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - D:/Terry/develop/docker-compose/pgvector/init.sql:/docker-entrypoint-initdb.d/init.sql  
+    networks:
+      - pgvector-network 
+
+networks:
+  pgvector-network: 
+    driver: bridge
