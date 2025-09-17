@@ -1,0 +1,21 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis_data:/data
+    environment:
+      - REDIS_PASSWORD=123123
+    networks:
+      - redisnet
+    command: [ "redis-server", "--appendonly", "yes" ]
+    restart: always
+
+volumes:
+  redis_data:
+
+networks:
+  redisnet:
+    external: true

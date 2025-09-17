@@ -1,2 +1,5 @@
 /rabbitmq/data/
 pgvector/init.sql
+/pgvector/data/
+/redis/redis_data/
+.idea

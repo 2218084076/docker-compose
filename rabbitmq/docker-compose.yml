@@ -1,10 +1,7 @@
-version: '3'
-
 services:
   rabbitmq:
-    image: 'rabbitmq:3-management'
-    restart: always
-    container_name: 'rabbitmq'
+    image: "rabbitmq:3-management"
+    container_name: rabbitmq
     ports:
       - "4369:4369"
       - "5671:5671"
@@ -12,9 +9,14 @@ services:
       - "25672:25672"
       - "15671:15671"
       - "15672:15672"
+    restart: always
     environment:
       - TZ=Asia/Shanghai
       - RABBITMQ_DEFAULT_USER=rabbitmq
       - RABBITMQ_DEFAULT_PASS=rabbitmq
     volumes:
       - ./data:/var/lib/rabbitmq
+
+networks:
+  rabbitmqnet:
+    external: true
